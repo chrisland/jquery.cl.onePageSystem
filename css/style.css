@@ -28,6 +28,7 @@ html, body {
 /* SYLE */
 
 
+
 .pageBtn {
 	border: none;
 	width: 30%;
@@ -45,12 +46,26 @@ html, body {
 	padding: 1%;
 }
 
+
 .content {
 	padding: 1%;
 }
 
 img {
-	width: 450px;
+	width: 40%;
 	float: left;
-	margin-right: 5px;
+	margin-right: 5%;
 }
+
+p {
+	width: 40%;
+	float: left;
+	margin: 0;
+	margin-right: 5%;
+	padding: 0;
+}
+
+
+
+
+
