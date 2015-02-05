@@ -30,13 +30,30 @@ You can also combine them.
 ## HTML Page Construction
 
 ```html
-
-	<div id="pages">
+	
+	<head>
+		<style>	
+			.page {
+				display: none;
+			}
+		</style>
+	</head
+	<body>
 		
 		<div class="page" id="page_1">Content Page 1</div>
 		<div class="page" id="page_2">Content Page 2</div>
 		<div class="page" id="page_3">Content Page 3</div>
-	</div>
+		
+		<script src="js/onPageSystem-min.js"></script>
+		<script src="js/onPageSystem-tasks.js"></script>
+		
+		<script>
+			window.onload = function() {
+				OPS.page.initialize();
+			};
+		</script>
+		
+	</body>
 ```
 
 
