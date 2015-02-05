@@ -1,4 +1,4 @@
-jquery.cl.onePageSystem
+onePageSystem
 ====================
 
 
@@ -18,9 +18,14 @@ jquery.cl.onePageSystem
 ```
 ---
 
-To define your own function edit the SYS.task objects in the app.js file.
+
+
+To define your own function, edit the onPageSystem-tasks file.
 
 To call the function, you need to add the data-task attribute.		
+
+You can add a data-content="" attribute. After clicking the button you will have the content is in your task function.
+
 
 ---
 
