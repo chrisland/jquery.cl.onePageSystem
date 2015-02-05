@@ -18,13 +18,11 @@ onePageSystem
 ```
 ---
 
+The class 'pageBtn' is a mandatory disclosure.
 
-
-To define your own function, edit the onPageSystem-tasks file.
-
-To call the function, you need to add the data-task attribute.		
-
-You can add a data-content="" attribute. After clicking the button you will have the content is in your task function.
+To change the page, you must specify the data-page attribute.
+To perform a task, add the data-task attribute.
+You can also combine them.
 
 
 ---
@@ -44,19 +42,6 @@ You can add a data-content="" attribute. After clicking the button you will have
 
 
 ---
-
-## HTML Page Construction
-
-```html
-
-	<div id="pages">
-		
-		<div class="page" id="page_1">Content Page 1</div>
-		<div class="page" id="page_2">Content Page 2</div>
-		<div class="page" id="page_3">Content Page 3</div>
-	</div>
-```
-
 
 
 ## Task Example
@@ -69,13 +54,17 @@ You can add a data-content="" attribute. After clicking the button you will have
 		
 		console.log('myFunc !','page:',page,'content:',content,'e:',e);
 		
-		return true;
+		return true; // if false or missing, the page will not change!
 	}
 ```		
 
+To define your own function, edit the onPageSystem-tasks file.
 You can add new functions comma seperated.
 The name of you function is the data-task attribute you have to set.
 In this Example it is data-task"myFunc"
+
+You can add a data-content="" attribute to the button elements.
+After clicking the button you will have the content in your task function.
 
 
 ---
