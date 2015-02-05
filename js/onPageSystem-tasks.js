@@ -25,24 +25,21 @@
 
 
 OPS.task = (function(){
-	
-
 	var tasks = {
+
 
 		myFunc: function (page, content, e) {
 			
-			// do cool things
+			// paste your code here...
 			
-			//alert('myFunc ! page:'+page+' content:'+content+' e:'+e);
+			console.log('myFunc !','page:',page,'content:',content,'e:',e);
 			
 			return true;
 		}
 		
 		
 	};
-
 	return tasks;
-	
 }());
 
 
