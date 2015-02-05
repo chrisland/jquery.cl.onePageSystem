@@ -215,6 +215,7 @@ SYS.page = (function(){
 		if (page_anz > 1 && typeof page_anz === 'number') {
 			jQuery('.page').hide();
 		}
+		jQuery('body').find('.pageBtn').css('curser','pointer'); // IOS BUG
 		jQuery('body').on('click','.pageBtn', function (e) {
 			
 			var ref = jQuery(e.currentTarget).data('page'),
