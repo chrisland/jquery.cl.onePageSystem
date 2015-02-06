@@ -20,10 +20,11 @@ onePageSystem
 
 The class 'pageBtn' is a mandatory disclosure.
 
-To change the page, you must specify the data-page attribute.
-To perform a task, add the data-task attribute.
+To change the page, you must specify the data-page attribute.<br /> 
+To perform a task, add the data-task attribute.<br /> 
 You can also combine them.
 
+<br /> <br /> 
 
 ---
 
@@ -61,8 +62,10 @@ You can also combine them.
 	</body>
 ```
 
-
+<br /> 
 ---
+
+<br /> <br /> 
 
 ## Initialize Options
 
@@ -84,8 +87,8 @@ You can also combine them.
 
 * #### handler
 
-	@require: true
-	@type: string
+	@require: true<br /> 
+	@type: string<br /> 
 	@default: 'pageBtn'
 	
 	the button class
@@ -99,8 +102,8 @@ You can also combine them.
 	
 * #### pages
 
-	@require: true
-	@type: string
+	@require: true<br /> 
+	@type: string<br /> 
 	@default: 'page'
 	
 	the class all your pages have
@@ -114,11 +117,11 @@ You can also combine them.
 	
 * #### pagePrefix
 
-	@require: false
-	@type: string
+	@require: false<br /> 
+	@type: string<br /> 
 	@default: ''
 	
-	the prefix all you page id begins
+	the prefix all you page id begins<br /> 
 	this can be '' if you do not use a prefix
 
 	###### Example:
@@ -130,8 +133,8 @@ You can also combine them.
 	
 * #### mockupDebug
 
-	@require: false
-	@type: boolean
+	@require: false<br /> 
+	@type: boolean<br /> 
 	@default: false
 	
 	if set to true shows the hidden mockup buttons
@@ -139,14 +142,14 @@ You can also combine them.
 	###### Example:
 	```javascript
 	{
-		pagePrefix: 'page_'
+		mockupDebug: true
 	}
 	```
 	
 * #### mockup
 
-	@require: false
-	@type: string
+	@require: false<br /> 
+	@type: string<br /> 
 	@default: {}
 	
 	
@@ -230,15 +233,15 @@ You can also combine them.
 	}
 ```		
 
-To define your own function, edit the onPageSystem-tasks file.
-You can add new functions comma seperated.
-The name of you function is the data-task attribute you have to set.
-In this Example it is data-task"myFunc"
+To define your own function, edit the onPageSystem-tasks file.<br /> 
+You can add new functions comma seperated.<br /> 
+The name of you function is the data-task attribute you have to set.<br /> 
+In this Example it is data-task"myFunc"<br /> 
 
-You can add a data-content="" attribute to the button elements.
+You can add a data-content="" attribute to the button elements.<br /> 
 After clicking the button you will have the content in your task function.
 
-
+<br /> <br /> 
 ---
 ---
 
