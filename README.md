@@ -44,7 +44,7 @@ You can also combine them.
 		<div class="page" id="page_2">Content Page 2</div>
 		<div class="page" id="page_3">Content Page 3</div>
 		
-		<script src="js/onPageSystem-min.js"></script>
+		<script src="js/onPageSystem.min.js"></script>
 		<script src="js/onPageSystem-tasks.js"></script>
 		
 		<script>
@@ -68,7 +68,7 @@ You can also combine them.
 
 * #### start
 
-	@require: true
+	@require: true<br /> 
 	@type: string
 	
 	your start page id
