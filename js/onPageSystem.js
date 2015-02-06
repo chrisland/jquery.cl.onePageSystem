@@ -7,7 +7,7 @@
 	Christian Marienfeld
 	www.chrisland.de
 	
-	Version 1.3.0
+	Version 1.3.1
 	https://github.com/chrisland/onePageOPStem
 	
 	
@@ -24,7 +24,14 @@ var OPS = OPS || {};
 OPS.page = (function(){
 	
 	
-	var open = 0,
+	var options = {
+		handler: 'pageBtn',
+		pages: 'page',
+		pagePrefix: 'page_',
+		displayStyle: 'block',
+		offButton: 'pageBtnOffline'
+	},
+	open = 0,
 	lastopen = 0,
 	timerOverlay = 0,
 	pageHistory = [],
@@ -32,15 +39,42 @@ OPS.page = (function(){
 	overlayPath = function (str) {
 		return	'url(img/overlay/'+str+'.svg)';
 	},
-	initialize = function () {
+	$_pages = {},
+	initialize = function (opt) {
 		
 		
-		var page_anz = document.getElementsByClassName('page').length;
+		for (var i in opt) {
+			if(opt.hasOwnProperty(i)){
+				options[i] = opt[i];
+			}
+		}
+		
+		//console.log(options);
+		
+		$_pages = document.getElementsByClassName(options.pages);
+		var page_anz = $_pages.length;
 		if (page_anz > 1 && typeof page_anz === 'number') {
 
-			var $_page = document.getElementsByClassName('page');
-			for(var i = 0; i < $_page.length; i++) {
-			    $_page[i].style.display = 'none';
+			
+			for(var i = 0; i < $_pages.length; i++) {
+				
+			    $_pages[i].style.display = 'none';
+			    
+			    
+			    
+			    //alert(options.mockup.length);
+			    
+			    
+			   // alert($_pages[i].id);
+			    if (options.mockup[$_pages[i].id]) {
+				    
+				    var wrap = makeMockupBtn(options.mockup[$_pages[i].id], i);
+				    
+				    $_pages[i].appendChild(wrap);
+			    }
+			    
+			    
+			    
 			}
 
 		}
@@ -56,7 +90,7 @@ OPS.page = (function(){
 			}
 		};
 		
-		var $_pageBtn = document.getElementsByClassName('pageBtn');
+		var $_pageBtn = document.getElementsByClassName(options.handler);
 		
 		for(var i = 0; i < $_pageBtn.length; i++) {
 			$_pageBtn[i].style.curser = 'pointer';  // IOS BUG
@@ -65,15 +99,60 @@ OPS.page = (function(){
 		}
 		
 
-		//var lastopen = OPS.page.getLastopen();
 		if ( lastopen ) {
 			OPS.page.changePageById(lastopen);
 		} else {
-			OPS.page.changePageById(1);
+			if (options.start) {
+				OPS.page.changePageById(options.start);
+			}
+			
 		}
 		
 		
 		return open;
+	},
+	makeMockupBtn = function (dom, i) {
+		var wrap = document.createElement('div');
+	    wrap.style.position = 'absolute';
+	    wrap.style.width = 0;
+	    wrap.style.height = 0;
+	    wrap.style.top = 0;
+	    wrap.style.left = 0;
+	    
+	    for(var a = 0; a < dom.length; a++) {
+		    
+		    var note = dom[a];
+		    var btn = document.createElement('button');
+		    btn.style.position = 'absolute';
+		    btn.style.zindex = 9999999+i+a;
+		    btn.style.left = note.x+'vw';
+		    btn.style.top = note.y+'vh';
+		    btn.style.width = note.width+'vw';
+		    btn.style.height = note.height+'vh';
+		    btn.style.border = 1;
+		    btn.style.outline = 0;
+		    btn.style.curser = 'pointer';
+		    btn.style.backgroundColor = 'rgba(0,0,0,0)';
+		    
+		    if (options.mockupDebug == true) {
+			    btn.style.backgroundColor = 'rgba(255,200,0,0.5)';
+			    btn.style.border = '1px solid #ffc800';
+			    
+			    if (note.title) {
+				    btn.innerHTML = note.title;
+			    }
+			    
+		    }
+		    btn.setAttribute('class', options.handler);
+		    btn.setAttribute('data-page', note.page);
+		    btn.setAttribute('data-task', note.task);
+		    btn.setAttribute('data-content', note.content);
+
+		    wrap.appendChild(btn);
+	    }
+	    
+	    return wrap;
+	    
 	},
 	changePageById = function(pageId,pageTask,pageContent) {
 				
@@ -90,7 +169,7 @@ OPS.page = (function(){
 	changePage = function (e) {
 
 
-		if (e.classList.contains('pageBtnOffline')) {
+		if (e.classList.contains(options.offButton)) {
 			return false;
 		}
 		var pageId = e.getAttribute('data-page'),
@@ -115,9 +194,7 @@ OPS.page = (function(){
 			if (!last) {
 				return false;
 			}
-			if (last.pageTask == 'cardOverview') {
-				last.pageContent = undefined;
-			}
+
 			if (last.pageId) {
 				OPS.page.changePageById(last.pageId,last.pageTask,last.pageContent);				
 				OPS.page.kickLastPageHistory(2);
@@ -131,15 +208,14 @@ OPS.page = (function(){
 	}
 	fadePageDom = function (pageId) {
 		
-		var $_page = document.getElementById('page_'+pageId);
+		var $_page = document.getElementById(options.pagePrefix+pageId);
 		if (pageId && $_page ) {
 
-			var $_pages = document.getElementsByClassName('page');
 			for(var i = 0; i < $_pages.length; i++) {
 			    $_pages[i].style.display = 'none';
 			}
 
-			$_page.style.display = 'block';
+			$_page.style.display = options.displayStyle;
 			lastopen = open;
 			open = pageId;
 		}
@@ -169,7 +245,7 @@ OPS.page = (function(){
 		
 		var $_overlay = document.getElementById(overlayDom);
 		$_overlay.style.backgroundImage = overlayPath(type);
-		$_overlay.style.display = 'block';
+		$_overlay.style.display = options.displayStyle;
 		if (time) {
 			clearTimeout(timerOverlay);
 			timerOverlay = setTimeout(function (){
@@ -180,22 +256,13 @@ OPS.page = (function(){
 	closeOverlay = function () {
 
 		document.getElementById(overlayDom).style.display = 'none';
-	},
-	getLastopen = function () {
-		return lastopen;
 	};
 	
 	return {
 		initialize: initialize
-		,changePage: changePage
-		,addPageHistory: addPageHistory
 		,changePageById: changePageById
-		,kickLastPageHistory: kickLastPageHistory
-		,changeContent: changeContent
 		,openOverlay: openOverlay
 		,closeOverlay: closeOverlay
-		,getLastopen: getLastopen
-		,getPageHistory: getPageHistory
 	}
 	
 }());
