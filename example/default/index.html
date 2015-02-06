@@ -1,0 +1,112 @@
+
+<!--
+
+	onePageSystem 
+	
+	
+	Christian Marienfeld
+	www.chrisland.de
+	
+	Version 1.3.1
+	https://github.com/chrisland/onePageSystem
+	
+	
+	Licence MIT
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8">
+		<title>onPageSystem // www.chrisland.de</title>
+		
+		<link rel="stylesheet" href="css/style.css">
+		
+		<style>	
+			.page {
+				display: none;
+			}
+		</style>
+	</head>
+	
+	
+
+<body>
+	
+
+
+	<div class="page" id="page_1">
+		<div class="nav">
+			<button class="pageBtn" data-page="1" data-task="myFunc">Page 1</button>
+			<button class="pageBtn" data-page="2" data-task="myFunc" data-content="myData">Page 2</button>
+			<button class="pageBtn" data-page="3">Page 3</button>
+		</div>
+		<div class="content">
+			<h1>Page 1</h1>
+			<br>
+			<button class="pageBtn" data-task="back"><- Back</button>
+			<br><br>
+			<p>
+				Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans. Ein kleines Bächlein namens Duden fließt durch ihren Ort und versorgt sie mit den nötigen Regelialien. Es ist ein paradiesmatisches Land, in dem einem gebratene Satzteile in den Mund fliegen. Nicht einmal von der allmächtigen Interpunktion werden die Blindtexte beherrscht – ein geradezu unorthographisches Leben. Eines Tages aber beschloß eine kleine Zeile Blindtext, ihr Name war Lorem Ipsum, hinaus zu gehen in die weite Grammatik. Der große Oxmox riet ihr davon ab, da es dort wimmele von bösen Kommata, wilden Fragezeichen und hinterhältigen Semikoli, doch das Blindtextchen ließ sich nicht beirren. Es packte seine sieben Versalien, schob sich sein Initial in den Gürtel und machte sich auf den Weg. Als es die ersten Hügel des Kursivgebirges erklommen hatte, warf es einen letzten Blick zurück auf die Skyline seiner Heimatstadt Buchstabhausen, die Headline von Alphabetdorf und die Subline seiner eigenen Straße, der Zeilengasse. Wehmütig lief ihm eine rhetorische Frage über die Wange, dann setzte es seinen Weg fort. Unterwegs traf es eine Copy. Die Copy warnte das Blindtextchen, da, wo sie herkäme wäre sie 
+			</p>
+			
+			<img src="http://chrisland.de/img/logo.svg" />
+			
+		</div>
+	</div>
+	
+	<div class="page hidden" id="page_2">
+		<div class="nav">
+			<button class="pageBtn" data-page="1" data-task="myFunc">Page 1</button>
+			<button class="pageBtn" data-page="2">Page 2</button>
+			<button class="pageBtn" data-page="3">Page 3</button>
+		</div>
+		<div class="content">
+			<h1>Page 2</h1>
+			<br>
+			<button class="pageBtn" data-task="back"><- Back</button>
+			<br><br>
+			<p>
+				Als es die ersten Hügel des Kursivgebirges erklommen hatte, warf es einen letzten Blick zurück auf die Skyline seiner Heimatstadt Buchstabhausen, die Headline von Alphabetdorf und die Subline seiner eigenen Straße, der Zeilengasse. Wehmütig lief ihm eine rhetorische Frage über die Wange, dann setzte es seinen Weg fort. Unterwegs traf es eine Copy. Die Copy warnte das Blindtextchen, da, wo sie herkäme wäre sie 
+			</p>
+
+			<img src="http://chrisland.de/img/logo.svg" />
+		</div>
+	</div>
+	<div class="page hidden" id="page_3">
+		<div class="nav">
+			
+			<button class="pageBtn" data-page="1" data-task="myFunc">Page 1</button>
+			<button class="pageBtn" data-page="2">Page 2</button>
+			<button class="pageBtn" data-page="3">Page 3</button>
+		</div>
+		<div class="content">
+			<h1>Page 3</h1>
+			<br>
+			<button class="pageBtn" data-task="back"><- Back</button>
+			<br><br>
+
+			<img src="http://chrisland.de/img/logo.svg" />
+			<img src="http://chrisland.de/img/logo.svg" />
+		</div>
+	</div>
+
+	
+	<script src="js/onPageSystem.min.js"></script>
+	<script src="js/onPageSystem-tasks.js"></script>
+	
+	<script>
+		window.onload = function() {
+			OPS.page.initialize({
+				start: '1',
+				handler: 'pageBtn',
+				pages: 'page',
+				pagePrefix: 'page_'
+			});
+		};
+	</script>
+	
+</body>
+</html>
