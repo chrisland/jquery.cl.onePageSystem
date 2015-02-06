@@ -27,9 +27,11 @@ OPS.page = (function(){
 	var options = {
 		handler: 'pageBtn',
 		pages: 'page',
-		pagePrefix: 'page_',
+		pagePrefix: '',
 		displayStyle: 'block',
-		offButton: 'pageBtnOffline'
+		offButton: 'pageBtnOffline',
+		mockupDebug: false,
+		mockup: {}
 	},
 	open = 0,
 	lastopen = 0,

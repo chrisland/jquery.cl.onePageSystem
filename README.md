@@ -27,7 +27,7 @@ You can also combine them.
 
 ---
 
-## HTML Page Construction
+# Usage
 
 ```html
 	
@@ -49,7 +49,12 @@ You can also combine them.
 		
 		<script>
 			window.onload = function() {
-				OPS.page.initialize();
+				OPS.page.initialize({
+					start: '1',
+					handler: 'pageBtn',
+					pages: 'page',
+					pagePrefix: 'page_'
+				});
 			};
 		</script>
 		
@@ -57,11 +62,161 @@ You can also combine them.
 ```
 
 
+---
+
+## Initialize Options
+
+* #### start
+
+	@require: true
+	@type: string
+	
+	your start page id
+	
+	###### Example:
+	```javascript
+	{
+		start: '1'
+	}
+	```
+	
+	opens <element id="{pagePrefix}1">
+
+* #### handler
+
+	@require: true
+	@type: string
+	@default: 'pageBtn'
+	
+	the button class
+	
+	###### Example:
+	```javascript
+	{
+		handler: 'pageBtn'
+	}
+	```
+	
+* #### pages
+
+	@require: true
+	@type: string
+	@default: 'page'
+	
+	the class all your pages have
+
+	###### Example:
+	```javascript
+	{
+		pages: 'page'
+	}
+	```
+	
+* #### pagePrefix
+
+	@require: false
+	@type: string
+	@default: ''
+	
+	the prefix all you page id begins
+	this can be '' if you do not use a prefix
+
+	###### Example:
+	```javascript
+	{
+		pagePrefix: 'page_'
+	}
+	```
+	
+* #### mockupDebug
+
+	@require: false
+	@type: boolean
+	@default: false
+	
+	if set to true shows the hidden mockup buttons
+
+	###### Example:
+	```javascript
+	{
+		pagePrefix: 'page_'
+	}
+	```
+	
+* #### mockup
+
+	@require: false
+	@type: string
+	@default: {}
+	
+	
+	all values are set with the css units vw and vh !
+	
+	x, y, width, heigth -> are required
+	
+	page, task and comments -> are used as explained above
+	
+	title -> the button text, only display if set mockupDebug: true
+	
+	###### Example:
+
+	```html
+		
+	
+		<script>
+			window.onload = function() {
+				OPS.page.initialize({
+					start: '1',
+					handler: 'pageBtn',
+					pages: 'page',
+					pagePrefix: 'page_',
+					mockupDebug: true,
+					mockup: {
+						'page_1': [
+							{
+								x: 50,
+								y: 50,
+								width: 30,
+								height: 5,
+								page: '2',
+								task: 'myFunc',
+								content: 'myData',
+								title: 'Goto Page 2'
+							},
+							{
+								x: 50,
+								y: 60,
+								width: 30,
+								height: 5,
+								page: '3'
+							}
+						],
+						'page_2': [
+							{
+								x: 60,
+								y: 20,
+								width: 10,
+								height: 5,
+								page: '3',
+								title: 'Goto Page 3'
+							}
+						]
+					}
+				});
+			};
+		</script>
+	
+	```
+
+
 
 ---
 
 
-## Task Example
+
+
+
+# Task Example
 
 
 ```js
